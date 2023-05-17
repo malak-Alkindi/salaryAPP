@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demoSalaryApp.responseopject.GetAccountResponse;
-import com.example.demoSalaryApp.resp.accountresp;
+
 @Service
 public class accountservice {
     @Autowired
@@ -17,6 +17,7 @@ public class accountservice {
     public void saveAccount(accountmodel accoun) {
         accountresp.save(accoun);
     }
+
     public List<accountmodel> getAccount() {
         return accountresp.findAll();
     }
@@ -25,13 +26,13 @@ public class accountservice {
         return accountresp.findAllById(Collections.singleton((long) 2));
     }
 
+
     public GetAccountResponse getEmployeeById(Long employeeId) {
-        Optional<accountmodel> optionalaccount=  accountresp.findById(employeeId);
-        if(!optionalaccount.isEmpty())
-        {
-            accountmodel account =  optionalaccount.get();
-            GetAccountResponse employeeResponse = new GetAccountResponse(account.getBankName(),account.getAccountNumber(),
-                    account.getBankBranch(),account.getSwiftCode());
+        Optional<accountmodel> optionalaccount = accountresp.findById(employeeId);
+        if (!optionalaccount.isEmpty()) {
+            accountmodel account = optionalaccount.get();
+            GetAccountResponse employeeResponse = new GetAccountResponse(account.getBankName(), account.getAccountNumber(),
+                    account.getBankBranch(), account.getSwiftCode());
             return employeeResponse;
         }
 
@@ -39,4 +40,17 @@ public class accountservice {
 
     }
 
-}
+    public String getAccountAsString(accountmodel account) {
+
+
+        GetAccountResponse employeeResponse = new GetAccountResponse(account.getBankName(), account.getAccountNumber(),
+                account.getBankBranch(), account.getSwiftCode());
+        return String.valueOf(employeeResponse);
+
+    }
+
+    public void deleteEmployeeById(Long employeeId) {
+
+        accountresp.deleteById(employeeId);
+
+}}

@@ -35,6 +35,11 @@ public class account  {
     public GetAccountResponse createAccount (@PathVariable Long Id) {
         return accountservice.getEmployeeById(Id);
     }
+
+    @RequestMapping("account/delete/{Id}")
+    public void deleteeAccount (@PathVariable Long Id) {
+         accountservice.deleteEmployeeById(Id);
+    }
     public void createAccount() {
         accountmodel accountt = new accountmodel();
         accountt.setAccountType("Saving");
@@ -49,31 +54,15 @@ public class account  {
         accountt.setAccountHolderName("Mohammed");
         accountservice.saveAccount(accountt);
     }
-    @GetMapping("api/foos")
+    @GetMapping("account/quer")
     @ResponseBody
-    public String getFoos(@RequestParam String id) {
-
+    public String getFoos(@RequestParam String AccountType) {
         accountmodel accountt = new accountmodel();
-        accountt.setAccountType(id);
-        accountservice.saveAccount(accountt);
-        return "accountType: " + id;
-    }
-    public void createeEmployee(GetAccountRequestObject accountRequestObject) {
+        accountt.setAccountType(AccountType);
 
-        accountmodel accountt = new accountmodel();
-        accountt.setAccountType(accountRequestObject.getAccountType());
-        accountt.setAccountNumber(accountRequestObject.getAccountNumber());
-        //account.setId(9092L);
-        accountt.setBankName(accountRequestObject.getBankName());
-        accountt.setBankBranch(accountRequestObject.getBankBranch());
-        accountt.setBranchCode(accountRequestObject.getBranchCode());
-        accountt.setCreatedDate(new Date());
-        accountt.setIsActive(true);
-        accountt.setSwiftCode(accountRequestObject.getSwiftCode());
-        accountt.setAccountHolderName(accountRequestObject.getAccountHolderName());
-        accountservice.saveAccount(accountt);
-
+        return accountservice.getAccountAsString(accountt);
     }
+
 
 
 }
