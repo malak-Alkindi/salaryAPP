@@ -4,12 +4,11 @@ import com.example.demoSalaryApp.models.accountmodel;
 import com.example.demoSalaryApp.requestobject.GetAccountRequestObject;
 import com.example.demoSalaryApp.services.accountservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.demoSalaryApp.responseopject.GetAccountResponse;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class account  {
@@ -50,7 +49,15 @@ public class account  {
         accountt.setAccountHolderName("Mohammed");
         accountservice.saveAccount(accountt);
     }
+    @GetMapping("api/foos")
+    @ResponseBody
+    public String getFoos(@RequestParam String id) {
 
+        accountmodel accountt = new accountmodel();
+        accountt.setAccountType(id);
+        accountservice.saveAccount(accountt);
+        return "accountType: " + id;
+    }
     public void createeEmployee(GetAccountRequestObject accountRequestObject) {
 
         accountmodel accountt = new accountmodel();
@@ -67,4 +74,6 @@ public class account  {
         accountservice.saveAccount(accountt);
 
     }
+
+
 }
