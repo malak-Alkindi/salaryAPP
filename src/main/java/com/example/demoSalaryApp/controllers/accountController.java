@@ -55,18 +55,18 @@ public class accountController {
         accountt.setAccountHolderName("Mohammed");
         accountservice.saveAccount(accountt);
     }
-    @GetMapping("account/quer")
+    @GetMapping("account/query")
     @ResponseBody
     public String getaccountQueryString(@RequestParam String a,@RequestParam String b,@RequestParam String c,@RequestParam String d) throws JsonProcessingException {
-        accountModel accountt = new accountModel();
-        accountt.setBankName(a);
-        accountt.setAccountNumber(b);
-        accountt.setBankBranch(c);
-        accountt.setSwiftCode(d);
+        accountModel accountObj = new accountModel();
+        accountObj.setBankName(a);
+        accountObj.setAccountNumber(b);
+        accountObj.setBankBranch(c);
+        accountObj.setSwiftCode(d);
         ObjectMapper mapper = new ObjectMapper();
-        String s = mapper.writeValueAsString(accountservice.getAccountAsString(accountt));
-        System.out.print(s);
-        return s;
+        String accountObjString = mapper.writeValueAsString(accountservice.getAccountObjectAsString(accountObj));
+        System.out.print(accountObjString);
+        return accountObjString;
     }
 
 

@@ -40,7 +40,7 @@ public class accountService {
 
     }
 
-    public GetAccountResponse getAccountAsString(accountModel account) {
+    public GetAccountResponse getAccountObjectAsString(accountModel account) {
 
 
         GetAccountResponse employeeResponse = new GetAccountResponse(account.getBankName(), account.getAccountNumber(),
