@@ -40,12 +40,12 @@ public class accountservice {
 
     }
 
-    public String getAccountAsString(accountmodel account) {
+    public GetAccountResponse getAccountAsString(accountmodel account) {
 
 
         GetAccountResponse employeeResponse = new GetAccountResponse(account.getBankName(), account.getAccountNumber(),
                 account.getBankBranch(), account.getSwiftCode());
-        return String.valueOf(employeeResponse);
+        return employeeResponse;
 
     }
 

@@ -1,14 +1,12 @@
 package com.example.demoSalaryApp.controllers;
 
 import com.example.demoSalaryApp.models.accountmodel;
-import com.example.demoSalaryApp.requestobject.GetAccountRequestObject;
 import com.example.demoSalaryApp.services.accountservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demoSalaryApp.responseopject.GetAccountResponse;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class account  {
@@ -56,10 +54,12 @@ public class account  {
     }
     @GetMapping("account/quer")
     @ResponseBody
-    public String getFoos(@RequestParam String AccountType) {
+    public GetAccountResponse getFoos(@RequestParam String a,@RequestParam String b,@RequestParam String c,@RequestParam String d) {
         accountmodel accountt = new accountmodel();
-        accountt.setAccountType(AccountType);
-
+        accountt.setBankName(a);
+        accountt.setAccountNumber(b);
+        accountt.setBankBranch(c);
+        accountt.setSwiftCode(d);
         return accountservice.getAccountAsString(accountt);
     }
 
