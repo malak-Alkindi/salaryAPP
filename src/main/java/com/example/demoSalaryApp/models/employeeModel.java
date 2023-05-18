@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Data
-public class employeemodel  extends BaseEntity{
+public class employeeModel extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

@@ -1,4 +1,4 @@
 package com.example.demoSalaryApp.services;
 
-public class employeeservice {
+public class employeeService {
 }
