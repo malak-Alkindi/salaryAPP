@@ -2,9 +2,13 @@ package com.example.demoSalaryApp.controllers;
 
 import com.example.demoSalaryApp.models.accountmodel;
 import com.example.demoSalaryApp.services.accountservice;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.demoSalaryApp.responseopject.GetAccountResponse;
+
+import java.awt.*;
 import java.util.Date;
 import java.util.List;
 
@@ -54,13 +58,17 @@ public class account  {
     }
     @GetMapping("account/quer")
     @ResponseBody
-    public GetAccountResponse getFoos(@RequestParam String a,@RequestParam String b,@RequestParam String c,@RequestParam String d) {
+    public String getFoos(@RequestParam String a,@RequestParam String b,@RequestParam String c,@RequestParam String d) throws JsonProcessingException {
+
         accountmodel accountt = new accountmodel();
         accountt.setBankName(a);
         accountt.setAccountNumber(b);
         accountt.setBankBranch(c);
         accountt.setSwiftCode(d);
-        return accountservice.getAccountAsString(accountt);
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(accountservice.getAccountAsString(accountt));
+        System.out.print(s);
+        return s;
     }
 
 
