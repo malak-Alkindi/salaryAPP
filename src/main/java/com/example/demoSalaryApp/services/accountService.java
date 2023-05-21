@@ -31,9 +31,9 @@ public class accountService {
         Optional<accountModel> optionalaccount = accountresp.findById(employeeId);
         if (!optionalaccount.isEmpty()) {
             accountModel account = optionalaccount.get();
-            GetAccountResponse employeeResponse = new GetAccountResponse(account.getBankName(), account.getAccountNumber(),
+            GetAccountResponse AccountResponse = new GetAccountResponse(account.getBankName(), account.getAccountNumber(),
                     account.getBankBranch(), account.getSwiftCode());
-            return employeeResponse;
+            return AccountResponse;
         }
 
         return null;

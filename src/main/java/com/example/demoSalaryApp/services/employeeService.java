@@ -19,15 +19,15 @@ public class employeeService {
     @Autowired
     employeeRepository employeeReps;
 
-    public void saveAccount(employeeModel emp) {
+    public void saveEmployee(employeeModel emp) {
         employeeReps.save(emp);
     }
 
-    public List<employeeModel> getAccount() {
+    public List<employeeModel> getEmployee() {
         return employeeReps.findAll();
     }
 
-    public List<employeeModel> getOneAccount() {
+    public List<employeeModel> getOneEmployee() {
         return employeeReps.findAllById(Collections.singleton((long) 2));
     }
 
