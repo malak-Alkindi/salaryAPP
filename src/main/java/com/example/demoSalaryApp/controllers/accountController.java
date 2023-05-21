@@ -50,6 +50,7 @@ public class accountController {
         accountt.setBankBranch("Seeb");
         accountt.setBranchCode(121);
         accountt.setCreatedDate(new Date());
+        accountt.setIsActive(true); accountt.setCreatedDate(new Date());
         accountt.setIsActive(true);
         accountt.setSwiftCode("93939");
         accountt.setAccountHolderName("Mohammed");
